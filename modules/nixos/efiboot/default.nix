@@ -8,12 +8,12 @@ in
 {
   options.modules.efiboot = with types; {
     bootloader = mkOption {
-      type = types.enum [ "grub" "systemd-boot" ];
+      type = enum [ "grub" "systemd-boot" ];
       default = "systemd-boot";
       description = "The kernel to use for booting.";
     };
     cleantmp = mkOption {
-      type = types.bool;
+      type = bool;
       default = true;
       description = "Clean /tmp on boot.";
     };

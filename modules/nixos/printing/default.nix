@@ -8,7 +8,7 @@ in
 {
   options.modules.printing = with types; {
     enable = mkOption {
-      type = types.bool;
+      type = bool;
       default = true;
       description = "Enable CUPS to print documents.";
     };

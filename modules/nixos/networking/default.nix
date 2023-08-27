@@ -8,24 +8,24 @@ in
 {
   options.modules.networking = with types; {
     enable = mkOption {
-      type = types.bool;
+      type = bool;
       default = true;
       description = "Enable networkmanager";
     };
     firewall = mkOption {
-      type = types.bool;
+      type = bool;
       default = true;
       description = "Enable firewall";
     };
     allowedTCPPorts =
       mkOption {
-        type = types.listOf types.port;
+        type = listOf port;
         default = [ ];
         description = "List of TCP ports to allow";
       };
     allowedUDPPorts =
       mkOption {
-        type = types.listOf types.port;
+        type = listOf port;
         default = [ ];
         description = "List of UDP ports to allow";
       };

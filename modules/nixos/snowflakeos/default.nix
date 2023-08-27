@@ -15,7 +15,7 @@ in
 
   options.modules.snowflakeos = with types; {
     enable = mkOption {
-      type = types.bool;
+      type = bool;
       default = true;
       description = "Enable SnowflakeOS system default";
     };
@@ -27,7 +27,7 @@ in
     environment.systemPackages = with inputs; [
       nix-software-center.packages.${system}.nix-software-center
       nixos-conf-editor.packages.${system}.nixos-conf-editor
-      # snowflakeos-module-manager.packages.${system}.snowflakeos-module-manager
+      snowflakeos-module-manager.packages.${system}.snowflakeos-module-manager
       snow.packages.${system}.snow
       pkgs.git # For rebuiling with github flakes
     ];

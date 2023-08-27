@@ -8,12 +8,12 @@ in
 {
   options.modules.pipewire = with types; {
     enable = mkOption {
-      type = types.bool;
+      type = bool;
       default = true;
       description = "Pipewire audio";
     };
     jack = 
-      lib.mkEnableOption "Enable Jack support";
+      mkEnableOption "Enable Jack support";
   };
 
   config = mkIf cfg.enable {

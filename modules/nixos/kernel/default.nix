@@ -8,7 +8,7 @@ in
 {
   options.modules.kernel = with types; {
     package = mkOption {
-      type = types.raw;
+      type = raw;
       default = pkgs.linuxPackages_latest;
       description = "The kernel to use for booting.";
     };

@@ -8,9 +8,9 @@ in
 {
   options.modules.gnome = with types; {
     enable =
-      lib.mkEnableOption "GNOME desktop environment";
+      mkEnableOption "GNOME desktop environment";
     gsconnect =
-      lib.mkEnableOption "Enable KDE Connect integration";
+      mkEnableOption "Enable KDE Connect integration";
   };
 
   config = mkIf cfg.enable {

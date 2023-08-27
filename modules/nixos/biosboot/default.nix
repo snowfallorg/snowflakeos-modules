@@ -8,12 +8,12 @@ in
 {
   options.modules.biosboot = with types; {
     device = mkOption {
-      type = types.string;
+      type = str;
       default = "nodev";
       description = "device";
     };
     cleantmp = mkOption {
-      type = types.bool;
+      type = bool;
       default = true;
       description = "Clean /tmp on boot.";
     };

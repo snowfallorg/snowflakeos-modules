@@ -6,6 +6,7 @@
     nix-software-center.url = "github:vlinkz/nix-software-center";
     nixos-conf-editor.url = "github:vlinkz/nixos-conf-editor";
     snow.url = "github:snowflakelinux/snow";
+    snowflakeos-module-manager.url = "github:snowflakelinux/snowflakeos-module-manager"
     snowfall-lib = {
       url = "github:snowfallorg/lib/dev";
       inputs.nixpkgs.follows = "nixpkgs";

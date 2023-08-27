@@ -8,9 +8,9 @@ in
 {
   options.modules.packagemanagers = with types; {
     flatpak =
-      lib.mkEnableOption "Enable Flatpak";
+      mkEnableOption "Enable Flatpak";
     appimage =
-      lib.mkEnableOption "Enable AppImage";
+      mkEnableOption "Enable AppImage";
   };
 
   config = mkMerge [
