@@ -1,0 +1,23 @@
+---
+name: Boot
+id: modules.biosboot
+flake: snowflakeos-modules
+unique_groups:
+- bootloader
+description: "BIOS Boot module."
+version: 1.0.0
+icon:
+  type: system
+  path: utilities-terminal-symbolic
+
+options:
+- label: "Grub Device"
+  id: modules.biosboot.device
+  description: "Enable Grub."
+  type: !text
+    default: ""
+- label: "Clean /tmp directory"
+  id: modules.biosboot.cleantmp
+  description: "Clean the /tmp directory before booting."
+  type: !switch
+    default: true

@@ -1,0 +1,16 @@
+---
+name: SnowflakeOS
+id: modules.snowflakeos
+flake: snowflakeos-modules
+description: "SnowflakeOS default options."
+version: 1.0.0
+icon:
+  type: system
+  path: weather-snow-symbolic
+
+options:
+- label: "Enable SnowflakeOS defaults"
+  id: modules.snowflakeos.enable
+  description: "SnowflakeOS default options."
+  type: !switch
+    default: true

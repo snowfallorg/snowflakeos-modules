@@ -1,0 +1,33 @@
+---
+name: Pipewire
+id: modules.pipewire
+flake: snowflakeos-modules
+description: "Pipewire Sound Server."
+version: 1.0.0
+icon:
+  type: system
+  path: org.gnome.Settings-sound-symbolic
+
+options:
+- label: "Enable"
+  id: modules.pipewire.enable
+  description: "Enable Pipewire."
+  type: !switch
+    default: true
+- label: "Jack"
+  id: modules.pipewire.jack
+  description: "Enable Jack support."
+  type: !switch
+    default: false
+
+# configuration:
+# - "programs.snow"!
+#   description: "Desc."
+#   type: boolean
+#   default: false
+#   example: true
+# nixosconfiguration:
+# - "hardware.pulseaudio"
+# - "security.rtkit"
+# - "services.pipewire"
+# - "sound"

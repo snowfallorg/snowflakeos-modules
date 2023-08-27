@@ -1,0 +1,21 @@
+---
+name: Package Managers
+id: modules.packagemanagers
+flake: snowflakeos-modules
+description: "Package Manager Module."
+version: 1.0.0
+icon:
+  type: system
+  path: package-x-generic-symbolic
+
+options:
+- label: "Flatpak"
+  id: modules.packagemanagers.flatpak
+  description: "Enable Flatpak support."
+  type: !switch
+    default: false
+- label: "AppImage"
+  id: modules.packagemanagers.appimage
+  description: "Enable AppImage support by installing the \"appimage-run\" package. For AppImages to work, you must run them with the \"appimage-run\" command."
+  type: !switch
+    default: false

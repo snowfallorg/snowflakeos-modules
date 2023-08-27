@@ -1,0 +1,24 @@
+---
+name: GNOME Desktop
+id: modules.gnome
+flake: snowflakeos-modules
+unique_groups:
+- desktop-environment
+- desktop-manager
+description: "GNOME Desktop module."
+version: 1.0.0
+icon:
+  type: system
+  path: start-here-symbolic
+
+options:
+- label: "Enable"
+  id: modules.gnome.enable
+  description: "Enable the GNOME desktop."
+  type: !switch
+    default: false
+- label: "GSConnect"
+  id: modules.gnome.gsconnect
+  description: "Enable KDE Connect integration."
+  type: !switch
+    default: false

@@ -1,0 +1,26 @@
+---
+name: Boot
+id: modules.efiboot
+flake: snowflakeos-modules
+unique_groups:
+- bootloader
+description: "EFI Boot module."
+version: 1.0.0
+icon:
+  type: system
+  path: utilities-terminal-symbolic
+
+options:
+- label: "Bootloader"
+  id: modules.efiboot.bootloader
+  description: "Select a bootloader"
+  type: !enum
+    default: '"systemd-boot"'
+    options:
+      '"systemd-boot"': "SystemD boot"
+      '"grub"': "Grub"
+- label: "Clean /tmp directory"
+  id: modules.efiboot.cleantmp
+  description: "Clean the /tmp directory before booting."
+  type: !switch
+    default: true

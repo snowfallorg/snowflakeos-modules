@@ -1,0 +1,24 @@
+---
+name: Kernel
+id: modules.kernel
+flake: snowflakeos-modules
+unique_groups:
+- kernel
+description: "Kernel options."
+version: 1.0.0
+icon:
+  type: system
+  path: application-x-executable-symbolic
+
+options:
+- label: "Kernel Package"
+  id: modules.kernel.package
+  description: "Select the kernel package."
+  type: !enum
+    default: pkgs.linuxPackages_latest
+    options:
+      pkgs.linuxPackages: "LTS Kernel"
+      pkgs.linuxPackages_latest: "Latest Kernel"
+      pkgs.linuxPackages-libre : "Libre Kernel"
+      pkgs.linuxPackages_hardened: "Hardened Kernel"
+      pkgs.linuxPackages_zen: "Zen Kernel"

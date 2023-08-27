@@ -1,0 +1,31 @@
+---
+name: Networking
+id: modules.networking
+flake: snowflakeos-modules
+description: "Network options."
+version: 1.0.0
+icon:
+  type: system
+  path: org.gnome.Settings-network-symbolic
+
+options:
+- label: "Enable Network Manager"
+  id: modules.networking.enable
+  description: "Enable NetworkManager."
+  type: !switch
+    default: true
+- label: "Enable Firewall"
+  id: modules.networking.firewall
+  description: "Enable the system firewall."
+  type: !switch
+    default: true
+- label: "Allowed TCP Ports"
+  id: modules.networking.allowedTCPPorts
+  description: "Allowed TCP Ports."
+  type: !numberlist
+    default: []
+- label: "Allowed UDP Ports"
+  id: modules.networking.allowedUDPPorts
+  description: "Allowed UDP Ports."
+  type: !numberlist
+    default: []

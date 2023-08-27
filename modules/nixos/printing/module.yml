@@ -1,0 +1,16 @@
+---
+name: Printing
+id: modules.printing
+flake: snowflakeos-modules
+description: "Printing module."
+version: 1.0.0
+icon:
+  type: system
+  path: document-print-symbolic
+
+options:
+- label: "Enable"
+  id: modules.printing.enable
+  description: "Enable the CUPS printing system."
+  type: !switch
+    default: true
