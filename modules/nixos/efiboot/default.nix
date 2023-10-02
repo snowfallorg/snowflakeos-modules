@@ -4,6 +4,7 @@ with lib;
 with lib.internal;
 let
   cfg = config.modules.efiboot;
+  efiSysMountPoint = config.boot.loader.efi.efiSysMountPoint;
 in
 {
   options.modules.efiboot = with types; {
@@ -33,6 +34,11 @@ in
       boot.loader.grub.efiSupport = true;
       boot.loader.grub.device = "nodev";
     })
-    { boot.tmp.cleanOnBoot = cfg.cleantmp; }
+    {
+      boot.tmp.cleanOnBoot = cfg.cleantmp;
+      # Temporary workaround for "random seed file is world accessible"
+      fileSystems.${efiSysMountPoint}.options =
+        mkIf (config.fileSystems.${efiSysMountPoint}.fsType == "vfat") [ "umask=0077" ];
+    }
   ];
 }
