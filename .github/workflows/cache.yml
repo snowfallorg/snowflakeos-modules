@@ -17,7 +17,7 @@ jobs:
           name: snowflakeos
           authToken: "${{ secrets.CACHIX_AUTH_TOKEN }}"
           pathsToPush: |
-            results/*
+            results/nix-software-center results/nixos-conf-editor results/snow results/snowflakeos-module-manager
       - run: |
           mkdir results
           for pkg in `ls packages`; do
