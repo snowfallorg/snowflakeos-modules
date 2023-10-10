@@ -16,7 +16,10 @@ jobs:
         with:
           name: snowflakeos
           authToken: "${{ secrets.CACHIX_AUTH_TOKEN }}"
+          pathsToPush: |
+            results/*
       - run: |
+          mkdir results
           for pkg in `ls packages`; do
-            nix build .#${pkg}
+            nix build .#${pkg} -o results/${pkg}-result
           done
