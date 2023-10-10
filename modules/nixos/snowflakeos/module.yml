@@ -3,14 +3,24 @@ name: SnowflakeOS
 id: modules.snowflakeos
 flake: snowflakeos-modules
 description: "SnowflakeOS default options."
-version: 1.0.0
+version: 0.0.1
 icon:
   type: system
   path: weather-snow-symbolic
 
 options:
-- label: "Enable SnowflakeOS defaults"
-  id: modules.snowflakeos.enable
-  description: "SnowflakeOS default options."
+# - label: "Enable SnowflakeOS defaults"
+#   id: modules.snowflakeos.enable
+#   description: "SnowflakeOS default options."
+#   type: !switch
+#     default: true
+- label: "Enable Nix Software Center"
+  id: modules.snowflakeos.nixSoftwareCenter
+  description: "Enable Nix Software Center, a graphical software center for Nix."
+  type: !switch
+    default: true
+- label: "Enable Configuration Editor"
+  id: modules.snowflakeos.nixosConfEditor
+  description: "Enable NixOS Configuration Editor, a graphical editor for NixOS configurations."
   type: !switch
     default: true

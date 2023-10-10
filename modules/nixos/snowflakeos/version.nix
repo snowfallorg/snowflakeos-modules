@@ -1,7 +1,6 @@
 { lib, config, options, pkgs, ... }:
 
 with lib;
-with lib.internal;
 let
   cfg = config.system.nixos;
   needsEscaping = s: null != builtins.match "[a-zA-Z0-9]+" s;

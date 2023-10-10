@@ -4,21 +4,30 @@ id: modules.gnome
 flake: snowflakeos-modules
 unique_groups:
 - desktop-environment
-- desktop-manager
 description: "GNOME Desktop module."
-version: 1.0.0
+version: 0.0.1
 icon:
   type: system
   path: start-here-symbolic
 
 options:
-- label: "Enable"
-  id: modules.gnome.enable
-  description: "Enable the GNOME desktop."
+- label: "Games"
+  id: services.gnome.games.enable
+  description: "Enable GNOME games."
   type: !switch
     default: false
 - label: "GSConnect"
   id: modules.gnome.gsconnect
   description: "Enable KDE Connect integration."
+  type: !switch
+    default: false
+- label: "Remove Utilities"
+  id: modules.gnome.removeUtils
+  description: "Disable non-essential GNOME application."
+  type: !switch
+    default: false
+- label: "Developer Tools"
+  id: services.gnome.core-developer-tools.enable
+  description: "Enable GNOME core developer tools."
   type: !switch
     default: false

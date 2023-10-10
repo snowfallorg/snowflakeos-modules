@@ -1,24 +1,24 @@
 { options, config, lib, pkgs, ... }:
 
 with lib;
-with lib.internal;
 let
   cfg = config.modules.gnome;
 in
 {
   options.modules.gnome = with types; {
-    enable =
-      mkEnableOption "GNOME desktop environment";
     gsconnect =
       mkEnableOption "Enable KDE Connect integration";
+    removeUtils =
+      mkEnableOption "Remove non-essential GNOME utilities";
   };
 
-  config = mkIf cfg.enable {
+  config = {
 
     # Enable the GNOME Desktop Environment.
     services.xserver.displayManager.gdm.enable = true;
     services.xserver.desktopManager.gnome.enable = true;
     services.xserver.enable = true;
+    services.xserver.displayManager.gdm.wayland = true;
 
     # Fix GNOME autologin
     systemd.services."getty@tty1".enable = false;
@@ -29,9 +29,27 @@ in
       enable = true;
     };
 
-    services.xserver.displayManager.gdm.wayland = true;
-    xdg.portal.enable = true;
-    services.gvfs.enable = true;
-    programs.dconf.enable = true;
+    environment.gnome.excludePackages = mkIf cfg.removeUtils (with pkgs.gnome; [
+      baobab
+      cheese
+      eog
+      epiphany
+      file-roller
+      gnome-calculator
+      gnome-calendar
+      gnome-characters
+      gnome-clocks
+      gnome-contacts
+      gnome-font-viewer
+      gnome-logs
+      gnome-maps
+      gnome-music
+      gnome-weather
+      pkgs.gnome-connections
+      pkgs.gnome-photos
+      pkgs.gnome-text-editor
+      simple-scan
+      totem
+    ]);
   };
 }

@@ -3,12 +3,24 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    nix-software-center.url = "github:vlinkz/nix-software-center";
-    nixos-conf-editor.url = "github:vlinkz/nixos-conf-editor";
-    snow.url = "github:snowflakelinux/snow";
-    snowflakeos-module-manager.url = "github:snowflakelinux/snowflakeos-module-manager";
+    nix-software-center = {
+      url = "github:vlinkz/nix-software-center";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    nixos-conf-editor = {
+      url = "github:vlinkz/nixos-conf-editor";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    snow = {
+      url = "github:snowflakelinux/snow";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    snowflakeos-module-manager = {
+      url = "github:snowflakelinux/snowflakeos-module-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     snowfall-lib = {
-      url = "github:snowfallorg/lib/dev";
+      url = "github:snowfallorg/lib";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };

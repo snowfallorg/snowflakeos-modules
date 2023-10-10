@@ -1,7 +1,6 @@
 { lib, config, options, pkgs, ... }:
 
 with lib;
-with lib.internal;
 {
   options.snowflakeos.graphical = {
     enable = mkEnableOption "SnowflakeOS default graphical configurations (not including DE)";

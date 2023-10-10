@@ -5,14 +5,14 @@ flake: snowflakeos-modules
 unique_groups:
 - kernel
 description: "Kernel options."
-version: 1.0.0
+version: 0.0.1
 icon:
   type: system
   path: application-x-executable-symbolic
 
 options:
 - label: "Kernel Package"
-  id: modules.kernel.package
+  id: boot.kernelPackages
   description: "Select the kernel package."
   type: !enum
     default: pkgs.linuxPackages_latest

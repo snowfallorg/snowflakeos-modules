@@ -1,20 +1,7 @@
-{ options, config, lib, pkgs, ... }:
-
+{ config, lib, ... }:
 with lib;
-with lib.internal;
-let
-  cfg = config.modules.printing;
-in
 {
-  options.modules.printing = with types; {
-    enable = mkOption {
-      type = bool;
-      default = true;
-      description = "Enable CUPS to print documents.";
-    };
-  };
-
-  config = mkIf cfg.enable {
-    services.printing.enable = true;
+  config = {
+    services.printing.enable = mkDefault true;
   };
 }

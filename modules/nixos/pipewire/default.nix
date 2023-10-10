@@ -1,7 +1,6 @@
 { options, config, lib, pkgs, ... }:
 
 with lib;
-with lib.internal;
 let
   cfg = config.modules.pipewire;
 in
@@ -12,8 +11,6 @@ in
       default = true;
       description = "Pipewire audio";
     };
-    jack = 
-      mkEnableOption "Enable Jack support";
   };
 
   config = mkIf cfg.enable {
@@ -22,7 +19,6 @@ in
     security.rtkit.enable = true;
     services.pipewire = {
       enable = true;
-      jack.enable = cfg.jack;
       alsa.enable = true;
       alsa.support32Bit = true;
       pulse.enable = true;

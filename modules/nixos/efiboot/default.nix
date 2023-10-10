@@ -1,7 +1,6 @@
 { options, config, lib, pkgs, ... }:
 
 with lib;
-with lib.internal;
 let
   cfg = config.modules.efiboot;
   efiSysMountPoint = config.boot.loader.efi.efiSysMountPoint;
@@ -13,19 +12,14 @@ in
       default = "systemd-boot";
       description = "The kernel to use for booting.";
     };
-    cleantmp = mkOption {
-      type = bool;
-      default = true;
-      description = "Clean /tmp on boot.";
-    };
   };
-
 
   config = mkMerge [
     (mkIf (cfg.bootloader == "systemd-boot")
       {
         boot.loader.systemd-boot.enable = true;
         boot.loader.efi.canTouchEfiVariables = true;
+        boot.loader.systemd-boot.editor = mkDefault false;    
       })
     (mkIf (cfg.bootloader == "grub") {
       boot.loader.systemd-boot.enable = false;
@@ -35,7 +29,7 @@ in
       boot.loader.grub.device = "nodev";
     })
     {
-      boot.tmp.cleanOnBoot = cfg.cleantmp;
+      boot.tmp.cleanOnBoot = mkDefault true;
       # Temporary workaround for "random seed file is world accessible"
       fileSystems.${efiSysMountPoint}.options =
         mkIf (config.fileSystems.${efiSysMountPoint}.fsType == "vfat") [ "umask=0077" ];

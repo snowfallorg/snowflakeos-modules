@@ -1,7 +1,6 @@
 { config, lib, ... }:
 
 with lib;
-with lib.internal;
 {
   config = {
     environment.etc = builtins.mapAttrs

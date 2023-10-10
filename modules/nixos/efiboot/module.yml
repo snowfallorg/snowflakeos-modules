@@ -5,7 +5,7 @@ flake: snowflakeos-modules
 unique_groups:
 - bootloader
 description: "EFI Boot module."
-version: 1.0.0
+version: 0.0.1
 icon:
   type: system
   path: utilities-terminal-symbolic
@@ -20,7 +20,12 @@ options:
       '"systemd-boot"': "SystemD boot"
       '"grub"': "Grub"
 - label: "Clean /tmp directory"
-  id: modules.efiboot.cleantmp
+  id: boot.tmp.cleanOnBoot
   description: "Clean the /tmp directory before booting."
   type: !switch
     default: true
+- label: "SystemD boot editor"
+  id: boot.loader.systemd-boot.editor
+  description: "Allow editing the kernel command-line before boot. This allows gaining root access by passing init=/bin/sh as a kernel parameter."
+  type: !switch
+    default: false

@@ -1,7 +1,6 @@
 { lib, config, options, pkgs, ... }:
 
 with lib;
-with lib.internal;
 let
   nvidia-offload = pkgs.writeShellScriptBin "nvidia-offload" ''
     export __NV_PRIME_RENDER_OFFLOAD=1
