@@ -6,11 +6,11 @@ let
 in
 {
   options.modules.packagemanagers = with types; {
-    appimage =
+    appimage.enable =
       mkEnableOption "Enable AppImage";
   };
 
-  config = mkIf cfg.appimage {
+  config = mkIf cfg.appimage.enable {
     environment.systemPackages = [ pkgs.appimage-run ];
   };
 }

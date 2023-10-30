@@ -5,9 +5,6 @@ let
   cfg = config.modules.biosboot;
 in
 {
-  options.modules.biosboot = with types; {
-  };
-
   config = {
     boot.loader = {
       systemd-boot.enable = false;

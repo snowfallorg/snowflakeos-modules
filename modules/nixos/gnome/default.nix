@@ -6,9 +6,9 @@ let
 in
 {
   options.modules.gnome = with types; {
-    gsconnect =
+    gsconnect.enable =
       mkEnableOption "Enable KDE Connect integration";
-    removeUtils =
+    removeUtils.enable =
       mkEnableOption "Remove non-essential GNOME utilities";
   };
 
@@ -24,12 +24,14 @@ in
     systemd.services."getty@tty1".enable = false;
     systemd.services."autovt@tty1".enable = false;
 
-    programs.kdeconnect = mkIf cfg.gsconnect {
+    programs.gnupg.agent.pinentryFlavor = mkDefault "gnome3";
+
+    programs.kdeconnect = mkIf cfg.gsconnect.enable {
       package = pkgs.gnomeExtensions.gsconnect;
       enable = true;
     };
 
-    environment.gnome.excludePackages = mkIf cfg.removeUtils (with pkgs.gnome; [
+    environment.gnome.excludePackages = mkIf cfg.removeUtils.enable (with pkgs.gnome; [
       baobab
       cheese
       eog

@@ -15,7 +15,7 @@ options:
   type: !switch
     default: false
 - label: "AppImage"
-  id: modules.packagemanagers.appimage
+  id: modules.packagemanagers.appimage.enable
   description: "Enable AppImage support by installing the \"appimage-run\" package. For AppImages to work, you must run them with the \"appimage-run\" command."
   type: !switch
     default: false
