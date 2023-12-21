@@ -17,12 +17,12 @@ options:
   type: !switch
     default: false
 - label: "GSConnect"
-  id: modules.gnome.gsconnect
+  id: modules.gnome.gsconnect.enable
   description: "Enable KDE Connect integration."
   type: !switch
     default: false
 - label: "Remove Utilities"
-  id: modules.gnome.removeUtils
+  id: modules.gnome.removeUtils.enable
   description: "Disable non-essential GNOME application."
   type: !switch
     default: false
