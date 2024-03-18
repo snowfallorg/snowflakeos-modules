@@ -24,7 +24,7 @@ in
     systemd.services."getty@tty1".enable = false;
     systemd.services."autovt@tty1".enable = false;
 
-    programs.gnupg.agent.pinentryFlavor = mkDefault "gnome3";
+    programs.gnupg.agent.pinentryPackage = mkDefault "pkgs.pinentry-gnome3";
 
     programs.kdeconnect = mkIf cfg.gsconnect.enable {
       package = pkgs.gnomeExtensions.gsconnect;
