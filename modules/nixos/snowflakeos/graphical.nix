@@ -11,10 +11,9 @@ with lib;
     services.fwupd.enable = mkDefault true;
 
     # Add opengl/vulkan support
-    hardware.opengl = {
+    hardware.graphics = {
       enable = mkDefault true;
-      driSupport = mkDefault config.hardware.opengl.enable;
-      driSupport32Bit = mkDefault (config.hardware.opengl.enable && pkgs.stdenv.hostPlatform.isx86);
+      enable32Bit = mkDefault (config.hardware.graphics.enable && pkgs.stdenv.hostPlatform.isx86);
     };
   };
 }
