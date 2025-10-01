@@ -28,7 +28,7 @@ in
 
   config = lib.mkIf config.snowflakeos.gnome.enable {
     snowflakeos.graphical.enable = true;
-    services.xserver.desktopManager.gnome = {
+    services.desktopManager.gnome = {
       favoriteAppsOverride = lib.mkDefault ''
         [org.gnome.shell]
         favorite-apps=[ 'firefox.desktop', 'org.gnome.Geary.desktop', 'org.gnome.Calendar.desktop', 'org.gnome.Nautilus.desktop', 'dev.vlinkz.NixSoftwareCenter.desktop' ]
