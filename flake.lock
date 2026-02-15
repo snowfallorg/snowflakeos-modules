@@ -306,11 +306,11 @@
         "snowfall-lib": "snowfall-lib"
       },
       "locked": {
-        "lastModified": 1771145572,
-        "narHash": "sha256-miAt0deWV+PVCUWnYO/G4FvsudmGpAdhlpURqRmpRKg=",
+        "lastModified": 1771149335,
+        "narHash": "sha256-YPUIwyumbQOE2DUY8NIsHIUTGUQnDVhnTVUZMZDRwi4=",
         "owner": "snowfallorg",
         "repo": "nixos-conf-editor",
-        "rev": "8ec780eaac41f51e32cad7178036effea66d0ea4",
+        "rev": "9f8b4519a2e0e8919b69b7572bc26dab54274a6f",
         "type": "github"
       },
       "original": {
@@ -463,15 +463,14 @@
       "inputs": {
         "nixpkgs": [
           "nixpkgs"
-        ],
-        "utils": "utils_2"
+        ]
       },
       "locked": {
-        "lastModified": 1695940028,
-        "narHash": "sha256-vsrX7uApokekSNIw1PLAOA/sFobBoLbXMoI/yp+coZo=",
+        "lastModified": 1771165234,
+        "narHash": "sha256-m3zpJwCDNRI/b03mC4nAur3vodEpDxuKhrVv+QJN5XE=",
         "owner": "snowfallorg",
         "repo": "snowflakeos-module-manager",
-        "rev": "68970b1a6c8cb25015636d91a48baefa8e5c4d48",
+        "rev": "566ff226d82f15fc6a1834953516b52538afbc54",
         "type": "github"
       },
       "original": {
@@ -555,21 +554,6 @@
         "type": "github"
       }
     },
-    "systems_6": {
-      "locked": {
-        "lastModified": 1681028828,
-        "narHash": "sha256-Vy1rq5AaRuLzOxct8nz4T6wlgyUR7zLU309k9mBC768=",
-        "owner": "nix-systems",
-        "repo": "default",
-        "rev": "da67096a3b9bf56a91d16901293e51ba5b49a27e",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nix-systems",
-        "repo": "default",
-        "type": "github"
-      }
-    },
     "utils": {
       "inputs": {
         "systems": "systems"
@@ -580,24 +564,6 @@
         "owner": "numtide",
         "repo": "flake-utils",
         "rev": "11707dc2f618dd54ca8739b309ec4fc024de578b",
-        "type": "github"
-      },
-      "original": {
-        "owner": "numtide",
-        "repo": "flake-utils",
-        "type": "github"
-      }
-    },
-    "utils_2": {
-      "inputs": {
-        "systems": "systems_6"
-      },
-      "locked": {
-        "lastModified": 1689068808,
-        "narHash": "sha256-6ixXo3wt24N/melDWjq70UuHQLxGV8jZvooRanIHXw0=",
-        "owner": "numtide",
-        "repo": "flake-utils",
-        "rev": "919d646de7be200f3bf08cb76ae1f09402b6f9b4",
         "type": "github"
       },
       "original": {
