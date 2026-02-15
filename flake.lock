@@ -466,11 +466,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1771165234,
-        "narHash": "sha256-m3zpJwCDNRI/b03mC4nAur3vodEpDxuKhrVv+QJN5XE=",
+        "lastModified": 1771171899,
+        "narHash": "sha256-/mLUH+p862G+mgntJ7/sWgGDAmvFCde7hH5RG+vS4uA=",
         "owner": "snowfallorg",
         "repo": "snowflakeos-module-manager",
-        "rev": "566ff226d82f15fc6a1834953516b52538afbc54",
+        "rev": "609132e846dcd55222b9b123dedc7ba67ba5f4a8",
         "type": "github"
       },
       "original": {
