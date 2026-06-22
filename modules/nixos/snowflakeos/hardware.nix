@@ -1,4 +1,10 @@
-{ lib, config, options, pkgs, ... }:
+{
+  lib,
+  config,
+  options,
+  pkgs,
+  ...
+}:
 
 with lib;
 let
@@ -11,8 +17,7 @@ let
   '';
 in
 {
-  config = mkIf (config.hardware.nvidia.prime.offload.enable && config.snowflakeos.graphical.enable)
-    {
-      environment.systemPackages = [ nvidia-offload ];
-    };
+  config = mkIf (config.hardware.nvidia.prime.offload.enable && config.snowflakeos.graphical.enable) {
+    environment.systemPackages = [ nvidia-offload ];
+  };
 }

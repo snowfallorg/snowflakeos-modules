@@ -1,4 +1,10 @@
-{ options, config, lib, pkgs, ... }:
+{
+  options,
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 with lib;
 let
@@ -6,8 +12,7 @@ let
 in
 {
   options.modules.packagemanagers = with types; {
-    appimage.enable =
-      mkEnableOption "Enable AppImage";
+    appimage.enable = mkEnableOption "Enable AppImage";
   };
 
   config = mkIf cfg.appimage.enable {

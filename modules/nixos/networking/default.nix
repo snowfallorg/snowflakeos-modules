@@ -1,4 +1,9 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 with lib;
 {
   config = {
@@ -7,7 +12,10 @@ with lib;
     # Workaround for https://github.com/NixOS/nixpkgs/issues/180175
     systemd.services.NetworkManager-wait-online = {
       serviceConfig = {
-        ExecStart = [ "" "${pkgs.networkmanager}/bin/nm-online -q" ];
+        ExecStart = [
+          ""
+          "${pkgs.networkmanager}/bin/nm-online -q"
+        ];
       };
     };
   };

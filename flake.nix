@@ -25,10 +25,19 @@
     };
   };
 
-  outputs = inputs:
+  outputs =
+    inputs:
     inputs.snowfall-lib.mkFlake {
       inherit inputs;
       channels-config.allowUnfree = true;
       src = ./.;
+
+      # Extra nix flags to set
+      outputs-builder = channels: {
+        formatter = channels.nixpkgs.nixfmt-tree;
+      };
+
+      # Default shell environment
+      alias.shells.default = "default";
     };
 }

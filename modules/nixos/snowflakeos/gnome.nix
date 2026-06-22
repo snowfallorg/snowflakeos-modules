@@ -1,4 +1,10 @@
-{ lib, config, options, pkgs, ... }:
+{
+  lib,
+  config,
+  options,
+  pkgs,
+  ...
+}:
 let
   nixos-background-info = pkgs.stdenv.mkDerivation { name = "nixos-background-info"; };
   snowflakeos-background-info = pkgs.writeTextFile rec {
