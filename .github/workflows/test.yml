@@ -1,0 +1,22 @@
+name: Test CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  test-flake:
+    name: "Test flake options"
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out the repository
+        uses: actions/checkout@v7
+
+      - name: Install nix
+        uses: DeterminateSystems/determinate-nix-action@v3 
+
+      - name: Check up flake configuration
+        run: nix flake check --system x86_64-linux --show-trace
