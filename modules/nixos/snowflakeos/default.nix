@@ -103,16 +103,22 @@ in
       # Reasonable Defaults
       nix = {
         settings = {
-          experimental-features = [
+          experimental-features = lib.mkDefault [
             "nix-command"
             "flakes"
+            "pipe-operators"
           ];
           substituters = [ "https://snowflakeos.cachix.org/" ];
           trusted-public-keys = [
             "snowflakeos.cachix.org-1:gXb32BL86r9bw1kBiw9AJuIkqN49xBvPd1ZW8YlqO70="
           ];
+
+          trusted-users =
+            builtins.attrValues config.users.users
+            |> builtins.filter (attr: attr.isNormalUser)
+            |> map (u: u.name);
         }
-        // (mapAttrsRecursive (_: mkDefault) {
+        // (lib.mapAttrsRecursive (_: lib.mkDefault) {
           connect-timeout = 5;
           log-lines = 25;
           min-free = 128000000;
@@ -122,10 +128,16 @@ in
           auto-optimise-store = true;
         });
       }
-      // (mapAttrsRecursive (_: mkDefault) {
-        linkInputs = true;
-        generateNixPathFromInputs = true;
-        generateRegistryFromInputs = true;
+      // (lib.mapAttrsRecursive (_: lib.mkDefault) {
+        # flake-plus-utils provided options
+        # linkInputs = true;
+        # generateNixPathFromInputs = true;
+        # generateRegistryFromInputs = true;
+
+        # Manually implemented nixPath and registry
+        # Because flake-utils-plus options arent' working
+        registry = lib.mapAttrs (_: value: { flake = value; }) inputs;
+        nixPath = [ "/etc/nix/inputs" ];
       });
     })
   ];
