@@ -106,7 +106,6 @@ in
           experimental-features = lib.mkDefault [
             "nix-command"
             "flakes"
-            "pipe-operators"
           ];
           substituters = [ "https://snowflakeos.cachix.org/" ];
           trusted-public-keys = [
