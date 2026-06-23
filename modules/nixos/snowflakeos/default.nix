@@ -112,10 +112,10 @@ in
             "snowflakeos.cachix.org-1:gXb32BL86r9bw1kBiw9AJuIkqN49xBvPd1ZW8YlqO70="
           ];
 
-          trusted-users =
-            builtins.attrValues config.users.users
-            |> builtins.filter (attr: attr.isNormalUser)
-            |> map (u: u.name);
+          # trusted-users =
+          #   builtins.attrValues config.users.users
+          #   |> builtins.filter (attr: attr.isNormalUser)
+          #   |> map (u: u.name);
         }
         // (lib.mapAttrsRecursive (_: lib.mkDefault) {
           connect-timeout = 5;
