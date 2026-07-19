@@ -1,4 +1,12 @@
-{ options, config, lib, pkgs, inputs, system, ... }:
+{
+  options,
+  config,
+  lib,
+  pkgs,
+  inputs,
+  system,
+  ...
+}:
 
 with lib;
 let
@@ -37,17 +45,17 @@ in
   config = mkMerge [
     (mkIf cfg.nixSoftwareCenter.enable {
       environment.systemPackages = with inputs; [
-        nix-software-center.packages.${system}.nix-software-center
+        nix-software-center.packages.${pkgs.stdenv.hostPlatform.system}.nix-software-center
       ];
     })
     (mkIf cfg.nixosConfEditor.enable {
       environment.systemPackages = with inputs; [
-        nixos-conf-editor.packages.${system}.nixos-conf-editor
+        nixos-conf-editor.packages.${pkgs.stdenv.hostPlatform.system}.nixos-conf-editor
       ];
     })
     (mkIf cfg.snowflakeosModuleManager.enable {
       environment.systemPackages = with inputs; [
-        snowflakeos-module-manager.packages.${system}.snowflakeos-module-manager
+        snowflakeos-module-manager.packages.${pkgs.stdenv.hostPlatform.system}.snowflakeos-module-manager
       ];
     })
     (mkIf cfg.binaryCompat.enable {
@@ -80,7 +88,7 @@ in
       snowflakeos.gnome.enable = mkDefault true;
 
       environment.systemPackages = with inputs; [
-        snow.packages.${system}.snow
+        snow.packages.${pkgs.stdenv.hostPlatform.system}.snow
         pkgs.git # For rebuiling with github flakes
       ];
 
@@ -93,27 +101,42 @@ in
       };
 
       # Reasonable Defaults
-      nix =
-        {
-          settings = {
-            experimental-features = [ "nix-command" "flakes" ];
-            substituters = [ "https://snowflakeos.cachix.org/" ];
-            trusted-public-keys = [
-              "snowflakeos.cachix.org-1:gXb32BL86r9bw1kBiw9AJuIkqN49xBvPd1ZW8YlqO70="
-            ];
-          } // (mapAttrsRecursive (_: mkDefault) {
-            connect-timeout = 5;
-            log-lines = 25;
-            min-free = 128000000;
-            max-free = 1000000000;
-            fallback = true;
-            warn-dirty = false;
-            auto-optimise-store = true;
-          });
-        } // (mapAttrsRecursive (_: mkDefault) {
-        linkInputs = true;
-        generateNixPathFromInputs = true;
-        generateRegistryFromInputs = true;
+      nix = {
+        settings = {
+          experimental-features = lib.mkDefault [
+            "nix-command"
+            "flakes"
+          ];
+          substituters = [ "https://snowflakeos.cachix.org/" ];
+          trusted-public-keys = [
+            "snowflakeos.cachix.org-1:gXb32BL86r9bw1kBiw9AJuIkqN49xBvPd1ZW8YlqO70="
+          ];
+
+          # trusted-users =
+          #   builtins.attrValues config.users.users
+          #   |> builtins.filter (attr: attr.isNormalUser)
+          #   |> map (u: u.name);
+        }
+        // (lib.mapAttrsRecursive (_: lib.mkDefault) {
+          connect-timeout = 5;
+          log-lines = 25;
+          min-free = 128000000;
+          max-free = 1000000000;
+          fallback = true;
+          warn-dirty = false;
+          auto-optimise-store = true;
+        });
+      }
+      // (lib.mapAttrsRecursive (_: lib.mkDefault) {
+        # flake-plus-utils provided options
+        # linkInputs = true;
+        # generateNixPathFromInputs = true;
+        # generateRegistryFromInputs = true;
+
+        # Manually implemented nixPath and registry
+        # Because flake-utils-plus options arent' working
+        registry = lib.mapAttrs (_: value: { flake = value; }) inputs;
+        nixPath = [ "/etc/nix/inputs" ];
       });
     })
   ];

@@ -1,15 +1,20 @@
-{ lib, config, options, pkgs, ... }:
+{
+  lib,
+  config,
+  options,
+  pkgs,
+  ...
+}:
 
 with lib;
 let
   cfg = config.system.nixos;
   needsEscaping = s: null != builtins.match "[a-zA-Z0-9]+" s;
   escapeIfNeccessary = s: if needsEscaping s then s else ''"${escape [ "\$" "\"" "\\" "\`" ] s}"'';
-  attrsToText = attrs:
-    concatStringsSep "\n"
-      (
-        mapAttrsToList (n: v: ''${n}=${escapeIfNeccessary (toString v)}'') attrs
-      ) + "\n";
+  attrsToText =
+    attrs:
+    concatStringsSep "\n" (mapAttrsToList (n: v: "${n}=${escapeIfNeccessary (toString v)}") attrs)
+    + "\n";
   osReleaseContents = {
     NAME = "SnowflakeOS";
     ID = "snowflakeos";

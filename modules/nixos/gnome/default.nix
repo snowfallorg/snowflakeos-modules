@@ -1,4 +1,10 @@
-{ options, config, lib, pkgs, ... }:
+{
+  options,
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 with lib;
 let
@@ -6,10 +12,8 @@ let
 in
 {
   options.modules.gnome = with types; {
-    gsconnect.enable =
-      mkEnableOption "Enable KDE Connect integration";
-    removeUtils.enable =
-      mkEnableOption "Remove non-essential GNOME utilities";
+    gsconnect.enable = mkEnableOption "Enable KDE Connect integration";
+    removeUtils.enable = mkEnableOption "Remove non-essential GNOME utilities";
   };
 
   config = {
@@ -33,27 +37,30 @@ in
       enable = true;
     };
 
-    environment.gnome.excludePackages = mkIf cfg.removeUtils.enable (with pkgs.gnome; [
-      baobab
-      cheese
-      eog
-      epiphany
-      file-roller
-      gnome-calculator
-      gnome-calendar
-      gnome-characters
-      gnome-clocks
-      gnome-contacts
-      gnome-font-viewer
-      gnome-logs
-      gnome-maps
-      gnome-music
-      gnome-weather
-      pkgs.gnome-connections
-      pkgs.gnome-photos
-      pkgs.gnome-text-editor
-      simple-scan
-      totem
-    ]);
+    environment.gnome.excludePackages = mkIf cfg.removeUtils.enable (
+      with pkgs.gnome;
+      [
+        baobab
+        cheese
+        eog
+        epiphany
+        file-roller
+        gnome-calculator
+        gnome-calendar
+        gnome-characters
+        gnome-clocks
+        gnome-contacts
+        gnome-font-viewer
+        gnome-logs
+        gnome-maps
+        gnome-music
+        gnome-weather
+        pkgs.gnome-connections
+        pkgs.gnome-photos
+        pkgs.gnome-text-editor
+        simple-scan
+        totem
+      ]
+    );
   };
 }
